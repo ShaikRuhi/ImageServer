@@ -1,0 +1,13 @@
+package com.cg.image.service;
+
+import com.cg.image.beans.Image;
+
+public class ImageServiceImpl implements ImageService {
+
+	@Override
+	public void addImage(Image image) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

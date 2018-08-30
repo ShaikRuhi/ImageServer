@@ -1,0 +1,5 @@
+package com.cg.image.beans;
+
+public class Image {
+
+}

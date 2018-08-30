@@ -1,0 +1,5 @@
+package com.cg.image.service;
+
+public class ImageServiceImpl {
+
+}

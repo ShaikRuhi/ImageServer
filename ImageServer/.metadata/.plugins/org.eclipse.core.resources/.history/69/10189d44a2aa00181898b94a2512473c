@@ -1,0 +1,7 @@
+package com.cg.image.service;
+
+import com.cg.image.beans.ImageBeans;
+
+public interface ImageService {
+public ImageBeans addImage(ImageBeans image);
+}

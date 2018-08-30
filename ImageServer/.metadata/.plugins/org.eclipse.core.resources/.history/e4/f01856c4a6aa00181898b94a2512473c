@@ -1,0 +1,53 @@
+package com.cg.image.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.capgemini.BackEnd.model.ProductImages;
+import com.capgemini.BackEnd.service.IUploadImageService;
+
+@RestController
+@RequestMapping("/api/v3")
+public class BackController {
+	@Autowired
+	private IUploadImageService imageservice;
+	@GetMapping("/maxId")
+	public Integer getMaxId()
+	{
+		System.out.println("id : controller");
+	  int i=imageservice.getMaxId();
+	  System.out.println("i is"+i);
+	  
+		return i;
+	}
+	
+	@PostMapping("/put1")
+	public void putImage(@RequestBody ImageBean productimages)
+	{System.out.println("Put : controller");
+	imageservice.save(productimages);
+	}
+	
+	@GetMapping("/getAll")
+	public ResponseEntity<List<ImageBean>> getAllImages(){
+		System.out.println("getall : controller");
+		
+		List<ImageBean> images= imageservice.getAllProducts();
+		if(images.isEmpty()||images==null)
+			return new ResponseEntity
+				("Sorry! Pilot details not available!",HttpStatus.NOT_FOUND);
+		return new ResponseEntity<List<ImageBean>>(images,HttpStatus.OK);
+	}
+	
+	
+}
+
+

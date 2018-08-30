@@ -1,0 +1,17 @@
+package com.cg.image.repo;
+
+import javax.transaction.Transactional;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
+
+import com.capgemini.BackEnd.model.ProductImages;
+
+@Repository("imagedao")
+@Transactional
+public interface IUploadImage extends JpaRepository<ImageBean, Integer>{
+	@Query("select max(imageId) from ProductImages")
+	public Integer findMaxProductId();
+
+}

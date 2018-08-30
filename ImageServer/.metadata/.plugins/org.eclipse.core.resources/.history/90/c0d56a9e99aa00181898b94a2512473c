@@ -1,0 +1,28 @@
+package com.cg.image.controller;
+
+import javax.transaction.Transactional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.cg.image.beans.Image;
+import com.cg.image.service.ImageService;
+
+@RestController
+@Transactional
+public class ImageController {
+	@Autowired
+private ImageService service;
+	@RequestMapping(value="/savefile",method=RequestMethod.POST,
+			consumes=MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+	public ResponseEntity<Image> acceptProductDetails(@ModelAttribute Image image) {
+		
+		return new ResponseEntity<Image>(service.addImage(image),HttpStatus.OK);
+	}
+}

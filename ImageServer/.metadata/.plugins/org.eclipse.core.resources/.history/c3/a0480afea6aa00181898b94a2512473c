@@ -1,0 +1,32 @@
+package com.cg.image.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.capgemini.BackEnd.dao.IUploadImage;
+import com.capgemini.BackEnd.model.ProductImages;
+import com.cg.image.beans.ImageBean;
+
+@Service("imageservice")
+public class UploadImageServiceImpl implements IUploadImageService {
+	@Autowired
+	private IUploadImage imagedao;
+	@Override
+	public int getMaxId() {
+		// TODO Auto-generated method stub
+		return imagedao.findMaxProductId();
+	}
+	@Override
+	public void save(ImageBean productimages) {
+		// TODO Auto-generated method stub
+		imagedao.save(productimages);
+	}
+	@Override
+	public List<ImageBean> getAllProducts() {
+		// TODO Auto-generated method stub
+		return imagedao.findAll();
+	}
+
+}

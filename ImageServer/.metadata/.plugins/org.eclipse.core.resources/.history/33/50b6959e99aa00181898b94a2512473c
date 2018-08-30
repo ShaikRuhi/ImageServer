@@ -1,0 +1,37 @@
+package com.cg.image.beans;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
+public class Image {
+	@Id
+	@GeneratedValue
+	private Integer imageId;
+	private String imageUrl;
+	
+	public String getImageUrl() {
+		return imageUrl;
+	}
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
+	public Image() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public Integer getImageId() {
+		return imageId;
+	}
+	public void setImageId(Integer imageId) {
+		this.imageId = imageId;
+	}
+	public Image(Integer imageId, String imageUrl) {
+		super();
+		this.imageId = imageId;
+		this.imageUrl = imageUrl;
+	}
+	
+
+}
